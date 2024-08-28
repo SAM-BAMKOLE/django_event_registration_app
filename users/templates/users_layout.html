@@ -26,6 +26,19 @@
 </head>
 
 <body>
+    <nav style="display: flex; gap: 1rem; margin-top: 1rem;">
+        {% if not user.is_authenticated %}
+
+        {% url 'register_page' as register_url %}
+        {% if request.path == register_url %}
+        <a href="{% url 'login_page' %}">Login</a>
+        {% else %}
+        <a href="{% url 'register_page' %}">Register</a>
+        {% endif %}
+
+        {% endif %}
+        <a href="{% url 'home_page' %}">Home</a>
+    </nav>
     {% block body %}Users layout{% endblock %}
 </body>
 

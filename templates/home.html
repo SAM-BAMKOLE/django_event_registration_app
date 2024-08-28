@@ -2,11 +2,15 @@
 {% block body %}
 <h1>Hello world!</h1>
 <div>
+    {% if not user.is_authenticated %}
     <a href="{% url 'register_page' %}">Register</a>
     <a href="{% url 'login_page' %}">Login</a>
+    {% endif %}
+    {% if user.is_authenticated %}
     <form action="{% url 'logout_view' %}" method="post" style="display: inline-block;">
         {% csrf_token %}
         <button style="padding: 0; color: red; background-color: transparent;">Logout</button>
     </form>
+    {% endif %}
 </div>
 {% endblock %}
