@@ -1,0 +1,18 @@
+{% extends 'users_layout.html' %}
+
+{% block body %}
+<h1>Signin page!</h1>
+<div style="display: flex; gap: 1rem; margin-top: 1rem;">
+    <a href="{% url 'register_page' %}">Register</a>
+    <a href="{% url 'home_page' %}">Home</a>
+</div>
+<form action="" method="post" style="margin-top: 1.2rem;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <!-- <p>
+    <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Your email"> <br />
+    </p> -->
+    <button type="submit">Login</button>
+</form>
+{% endblock %}
