@@ -9,8 +9,38 @@
     {% if user.is_authenticated %}
     <form action="{% url 'logout_view' %}" method="post" style="display: inline-block;">
         {% csrf_token %}
+        <a href="{% url 'create_event' %}">Create event</a>
         <button style="padding: 0; color: red; background-color: transparent;">Logout</button>
     </form>
     {% endif %}
 </div>
+
+<h2>Events</h2>
+
+<ul>
+    {% for event in events %}
+    <li>
+        <article>
+            <h4>{{ event.title}}</h4>
+            <p>{{ event.description }}</p>
+            <h6><strong>Date:</strong> {{ event.date }}</h6>
+            <h6><strong>Organized by:</strong> {{ event.organizer }}</h6>
+            <div class="flex">
+                <a href="{% url 'view_event' slug=event.slug %}">View event details</a>
+                {% if event.organizer != request.user %}
+                {% if user_registrations and event.id in user_registrations %}
+                <button disabled="disabled">Event registered</button>
+                {% else %}
+                <form action="{% url 'register_event' id=event.id %}" method="post"
+                    style="display: inline-block; margin-left: 1rem;">
+                    {% csrf_token %}
+                    <button>Register for event</button>
+                </form>
+                {% endif %}
+                {% endif %}
+            </div>
+        </article>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}

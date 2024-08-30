@@ -1,0 +1,14 @@
+{% extends 'users_layout.html' %}
+
+{% block body %}
+<h1>Login page!</h1>
+
+<form action="" method="post" style="margin-top: 1.2rem;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if request.GET.next %}
+    <input type="hidden" name="next" value="{{ request.GET.next }}" />
+    {% endif %}
+    <button type="submit">Login</button>
+</form>
+{% endblock %}

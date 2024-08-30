@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block body %}
+<ul>
+    {% if registrations.exists %}
+    {% for registration in registrations %}
+    <li>
+        <article>
+            <h4>{{ registration.event.title }}</h4>
+            <p>Registered at {{ registration.registration_date }}</p>
+        </article>
+    </li>
+    {% endfor %}
+    {% else %}
+    <h2>You have not registered for any event!</h2>
+    <a href="{% url 'home_page' %}">Check out some events</a>
+    {% endif %}
+</ul>
+{% endblock %}

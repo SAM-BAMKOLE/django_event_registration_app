@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django_extensions',
     # mine
     'users',
+    'events',
+    'registrations',
 ]
 
 MIDDLEWARE = [

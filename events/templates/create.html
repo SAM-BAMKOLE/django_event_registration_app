@@ -1,0 +1,9 @@
+{% extends "users_layout.html" %}
+
+{% block body %}
+<form action="{% url 'create_event' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create event</button>
+</form>
+{% endblock %}

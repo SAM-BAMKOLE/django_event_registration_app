@@ -1,0 +1,10 @@
+{% extends "users_layout.html" %}
+
+{% block body %}
+<a href="{% url 'view_event' slug=event.slug %}">Go back</a>
+<form action="{% url 'edit_event' slug=event.slug %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update event</button>
+</form>
+{% endblock %}

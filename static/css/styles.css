@@ -4,3 +4,7 @@
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+button {
+    background-color: cadetblue;
+}

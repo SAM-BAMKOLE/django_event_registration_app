@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<a href="{% url 'home_page' %}">Homepage</a>
+<article>
+    <h2>{{ event.title }}</h2>
+    <p>{{ event.description }}</p>
+    <p>{{ event.date }}</p>
+</article>
+{% if event.organizer == request.user %}
+<a href="{% url 'edit_event' slug=event.slug  %}">Edit event</a>
+{% endif %}
+{% endblock %}
